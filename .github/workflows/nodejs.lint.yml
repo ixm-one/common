@@ -4,7 +4,7 @@ on:
     inputs:
       fail-on-error:
         description: Should reviewdog fail when errors are found
-        require: false
+        required: false
         default: true
         type: boolean
 jobs:

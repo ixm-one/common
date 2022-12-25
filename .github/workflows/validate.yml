@@ -26,6 +26,7 @@ jobs:
   renovate:
     name: Renovate Configuration Validator
     runs-on: ubuntu-latest
+    needs: skip
     if: needs.skip.outputs.should-skip != 'true'
     steps:
       - name: Checkout

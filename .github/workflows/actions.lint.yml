@@ -1,0 +1,20 @@
+name: actionlint
+on:
+  workflow_call:
+    inputs:
+      fail-on-error:
+        description: Should reviewdog fail when errors are found
+        require: false
+        type: boolean
+        default: true
+jobs:
+  actions:
+    name: Review Dog - Lint GitHub Actions Workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Review Dog - actionlint
+        uses: reviewdog/action-actionlint@v1
+        with:
+          fail_on_error: ${{inputs.fail-on-error}}

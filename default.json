@@ -1,0 +1,23 @@
+{
+  "extends": ["ixm-one/common:actions", "ixm-one/common:node", ":gitSignOff"],
+  "labels": ["renovate:dependencies"],
+  "timezone": "America/Los_Angeles",
+  "commitMessagePrefix": "⬆️",
+  "commitMessageSuffix": "{{#if isLockfileUpdate}}🔒{{/if}}",
+  "semanticCommits": "disabled",
+  "rangeStrategy": "auto",
+  "rebaseWhen": "behind-base-branch",
+  "rollback": {
+    "commitMessageAction": "Rollback",
+    "commitMessagePrefix": "⏪"
+  },
+  "vulnerabilityAlerts": {
+    "addLabels": ["renovate:security"]
+  },
+  "packageRules": [
+    {
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    }
+  ]
+}

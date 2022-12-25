@@ -1,0 +1,8 @@
+{
+  "poetry": {
+    "addLabels": ["renovate:python"],
+    "additionalBranchPrefix": "python/",
+    "commitMessageTopic": "🐍 Python Package {{{depName}}}",
+    "versioning": "poetry"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "github-actions": {
+    "addLabels": ["renovate:actions"],
+    "additionalBranchPrefix": "actions/",
+    "commitMessageTopic": "👷 GitHub Action {{{depName}}}",
+    "packageRules": [
+      {
+        "groupName": "Review Dog Actions",
+        "groupSlug": "reviewdog",
+        "matchPackagePrefixes": ["reviewdog/"]
+      },
+      {
+        "groupName": "Common Actions",
+        "groupSlug": "common",
+        "matchPackagePrefixes": ["actions/"]
+      },
+      {
+        "groupName": "Setup Actions",
+        "matchManagers": ["github-actions"],
+        "matchPackagePatterns": ["^[^/]+[/]setup-.+$"]
+      }
+    ],
+    "pin": {
+      "group": {
+        "commitMessageTopic": "👷 {{{groupName}}} Workflows"
+      },
+      "groupName": "GitHub Actions"
+    },
+    "pinDigest": {
+      "group": {
+        "commitMessageTopic": "👷 {{{groupName}}} Workflows"
+      },
+      "groupName": "GitHub Actions"
+    },
+    "pinDigests": true,
+    "rangeStrategy": "pin"
+  }
+}

@@ -1,0 +1,43 @@
+name: Validate
+on:
+  pull_request:
+    types: [synchronize, opened, edited]
+  push:
+    branches: [main]
+jobs:
+  skip:
+    name: Skip Duplicate Actions
+    uses: ./.github/workflows/actions.skip.yml
+  actions:
+    name: Lint GitHub Actions Workflows
+    uses: ./.github/workflows/actions.lint.yml
+    needs: skip
+    if: needs.skip.outputs.should-skip != 'true'
+  spellcheck:
+    name: Lint Spelling
+    uses: ./.github/workflows/spellcheck.yml
+    needs: skip
+    if: needs.skip.outputs.should-skip != 'true'
+  eslint:
+    name: Lint NodeJS
+    uses: ./.github/workflows/nodejs.lint.yml
+    needs: skip
+    if: needs.skip.outputs.should-skip != 'true'
+  renovate:
+    name: Renovate Configuration Validator
+    runs-on: ubuntu-latest
+    if: needs.skip.outputs.should-skip != 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache-dependency-path: '**/package-lock.json'
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Execute Validator
+        run: |
+          shopt -s globstar extglob
+          npx renovate-config-validator !(package*).json

@@ -1,0 +1,27 @@
+name: ESLint
+on:
+  workflow_call:
+    inputs:
+      fail-on-error:
+        description: Should reviewdog fail when errors are found
+        require: false
+        default: true
+        type: boolean
+jobs:
+  eslint:
+    name: Review Dog - ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache-dependency-path: '**/package-lock.json'
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Review Dog - eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          fail_on_error: ${{inputs.fail-on-error}}

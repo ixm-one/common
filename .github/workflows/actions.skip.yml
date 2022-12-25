@@ -1,0 +1,16 @@
+name: Skip Duplicate Actions
+on:
+  workflow_call:
+    outputs:
+      should-skip:
+        description: Whether the rest of the workflow should be skipped or not
+        value: ${{ jobs.skip.outputs.should_skip }}
+jobs:
+  skip:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{steps.skip.outputs.should_skip}}
+    steps:
+      - name: Skip Duplicate Actions
+        uses: fkirc/skip-duplicate-actions@v5
+        id: skip

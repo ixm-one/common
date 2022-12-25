@@ -15,6 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
       - name: Review Dog - actionlint
-        uses: reviewdog/action-actionlint@v1
+        uses: reviewdog/action-actionlint@326cc761d95c903f29a111a44888be707f912684 # v1
         with:
           fail_on_error: ${{inputs.fail-on-error}}

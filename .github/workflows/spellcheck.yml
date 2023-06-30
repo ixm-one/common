@@ -8,4 +8,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - name: Check Spelling
-        uses: crate-ci/typos@2f61fa1697d4f7930ca26e949c8f243b5b8e9b66 # v1.15.8
+        uses: crate-ci/typos@2158ddd42cda41bf7d69c14ffe8114eec91e3f2e # v1.15.9

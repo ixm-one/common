@@ -22,6 +22,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Review Dog - eslint
-        uses: reviewdog/action-eslint@790a3d311c34b6f73294740617f9c2e9be493ae3 # v1
+        uses: reviewdog/action-eslint@bea7e5c9def85cae601b63bc08620a3561043710 # v1
         with:
           fail_on_error: ${{inputs.fail-on-error}}

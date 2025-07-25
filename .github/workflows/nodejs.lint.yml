@@ -2,11 +2,11 @@ name: ESLint
 on:
   workflow_call:
     inputs:
-      fail-on-error:
+      fail-level:
         description: Should reviewdog fail when errors are found
         required: false
-        default: true
-        type: boolean
+        default: error
+        type: string
 jobs:
   eslint:
     name: Review Dog - ESLint
@@ -24,4 +24,4 @@ jobs:
       - name: Review Dog - eslint
         uses: reviewdog/action-eslint@9b5b0150e399e1f007ee3c27bc156549810a64e3 # v1
         with:
-          fail_on_error: ${{inputs.fail-on-error}}
+          fail_level: ${{inputs.fail-level}}
